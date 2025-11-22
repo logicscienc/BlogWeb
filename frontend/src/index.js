@@ -2,10 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
+import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "next-themes";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <BrowserRouter>
+    <ThemeProvider
+      attribute="class"
+      enableSystem={true}
+      defaultTheme="dark"
+    >
+      <App />
+    </ThemeProvider>
+  </BrowserRouter>
 );
+

@@ -9,8 +9,78 @@
 
 *{
     font-family: "Poppins", sans-serif;;
+    
+   
 }
 
 ::-webkit-scrollbar{
     display: none;
 }
+
+
+
+/* GHOST TOGGLE FIXED ANIMATIONS + EYE VISIBLE */
+@layer components {
+  @keyframes bobble {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(15%); }
+    100% { transform: translateY(0); }
+  }
+
+  @keyframes sway {
+    0% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+    100% { transform: translateX(-2px); }
+  }
+
+  @keyframes sway-more {
+    0% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    100% { transform: translateX(-4px); }
+  }
+
+  @keyframes blink {
+    0% { top: 16px; height: 8px; }
+    40% { top: 20px; height: 2px; }
+    50% { top: 20px; height: 2px; }
+    51% { top: 16px; height: 8px; }
+    100% { top: 16px; height: 8px; }
+  }
+
+  @keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.7s ease-out;
+}
+
+  .animate-bobble { animation: bobble 4.3s infinite; }
+  .animate-sway { animation: sway 2s infinite; }
+  .animate-sway-more { animation: sway-more 2s infinite 1s; }
+  .animate-blink { animation: blink 4.25s infinite; }
+
+  .ghost-eye {
+    position: absolute;
+    left: calc(50% - 7px);
+    top: 16px;
+    width: 10px;
+    height: 8px;
+    border-left: 3px solid;
+    border-right: 3px solid;
+    animation: bobble 2s infinite, sway-more 2s infinite 1s, blink 4.25s infinite;
+    z-index: 20;
+  }
+
+  .ghost-bottom {
+    position: absolute;
+    top: calc(50% - 6px);
+    left: -10%;
+    width: 120%;
+    height: 12px;
+    border-radius: 100px;
+    animation: sway 2s infinite;
+  }
+}
+
